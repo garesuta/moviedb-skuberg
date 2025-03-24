@@ -1,6 +1,9 @@
 import React from "react";
+import { useCart } from "../context/CartContext";
 
 const Card = ({ movie }) => {
+  const { getItemQuantity, addToCart, removeFromCart, decreaseFromCart } =
+    useCart();
   // Function to truncate text
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -20,6 +23,31 @@ const Card = ({ movie }) => {
         <p className="text-sm text-gray-400 mt-1">
           {truncateText(movie.overview, 100)} {/* Truncate to 100 characters */}
         </p>
+        <p className="text-lg font-bold mt-2 text-blue-500">${movie.price}</p>
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={() => addToCart(movie)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            +
+          </button>
+          <div className="flex items-center font-bold py-2 px-4 rounded">
+            {getItemQuantity(movie.id)}
+          </div>
+          <button
+            onClick={() => decreaseFromCart(movie.id)}
+            className="bg-amber-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            -
+          </button>
+
+          <button
+            onClick={() => removeFromCart(movie.id)}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );

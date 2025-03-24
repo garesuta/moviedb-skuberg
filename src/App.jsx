@@ -1,13 +1,26 @@
 import "./App.css";
-import Display from "./components/Display";
-import Header from "./components/Header";
+import Home from "./pages/Home";
+import { CartProvider } from "./context/CartContext";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CheckOut from "./pages/CheckOut";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/cart",
+      element: <CheckOut />,
+    },
+  ]);
   return (
-    <>
-      <Header />
-      <Display />
-    </>
+    <CartProvider>
+      <>
+        <RouterProvider router={router} />
+      </>
+    </CartProvider>
   );
 }
 
