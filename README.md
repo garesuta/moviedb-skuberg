@@ -9,4 +9,4 @@ VITE_TMDB_API_KEY="Your api key"
 
 รัน npm run dev ได้เลย หรือ
 
-สามารถเข้าดูได้ที่ลิ้ง [Web Link]()
+สามารถเข้าดูได้ที่ลิ้ง [Web Link](https://moviedb-skuberg.vercel.app/)
